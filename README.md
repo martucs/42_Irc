@@ -23,7 +23,7 @@ About the project
 - KILL
 - NOTICE
  
-
+We used Hexchat as our reference client, but also did thorough testing with Netcat.
 
 Resources
  -----------------------------
