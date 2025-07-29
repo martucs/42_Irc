@@ -25,6 +25,30 @@ About the project
  
 We used Hexchat as our reference client, but also did thorough testing with Netcat.
 
+What the program should do
+ -----------------------------
+1. Create a listening socket in a specific port and address
+2. Wait for clients to connect to it
+3. Wait for any client to send information (main loop, done with poll())
+4. Get the line of data
+5. Parse that line to identify the command
+6. Execute the command (with the parsed arguments of the command)
+7. Keep waiting for any client to send data
+
+Our class arquitecture
+ -----------------------------
+<img width="2097" height="1098" alt="Screenshot from 2025-07-29 16-00-04" src="https://github.com/user-attachments/assets/2bd60248-36f9-4c6f-81a2-6bdca6d93518" />
+With this structure we can access all the information we need from the Clients, as well as from the Channels.
+
+It is very important to keep it in mind when doing the commands and not forget to notify, close and handle all the information from each client and client accordingly. 
+
+In general, you should always think about who may be be affected by the changes you make when executing a command, not just for the client who sends it, but for everyone else as well.
+
+
+
+ 
+
+
 Resources
  -----------------------------
 Essential
