@@ -40,7 +40,7 @@ Our class arquitecture
 <img width="2097" height="1098" alt="Screenshot from 2025-07-29 16-00-04" src="https://github.com/user-attachments/assets/2bd60248-36f9-4c6f-81a2-6bdca6d93518" />
 With this structure we can access all the information we need from the Clients, as well as from the Channels.
 
-It is very important to keep it in mind when doing the commands and not forget to notify, close and handle all the information from each client and client accordingly. 
+It is very important to keep it in mind when doing the commands and not forget to notify, close and handle all the information from each client and channel accordingly. 
 
 In general, you should always think about who may be be affected by the changes you make when executing a command, not just for the client who sends it, but for everyone else as well.
 
