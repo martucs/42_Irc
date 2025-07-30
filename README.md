@@ -12,8 +12,20 @@ About the project
  
 We used Hexchat as our reference client, but also did thorough testing with Netcat.
 
-What the program should do
+Compared to what we have done in 42 this is not a hard project, but organization and clean code is going to be important.
+
+We were 3 members and started the division of the project by:
+
+ - server setup
+ - parsing of the line received
+
+Both of these are pretty simple steps (be careful with the management of fds for the server though), I would say most of the work comes from the commands, which can be easily distributed between the team.
+
+I believe with this project I have grown to understand and apprecciate C++ because I was able to apply what I have learned in the CPPs and I finally realized the perks of OOP.
+
+Step by step
  -----------------------------
+ In its core, the program should:
 1. Create a listening socket in a specific port and address
 2. Wait for clients to connect to it
 3. Wait for any client to send information (main loop, done with poll())
@@ -24,6 +36,7 @@ What the program should do
 
 Our class arquitecture
  -----------------------------
+ To help clarify the structure of the classes, here is a simplified representation:
 <img width="2097" height="1098" alt="Screenshot from 2025-07-29 16-00-04" src="https://github.com/user-attachments/assets/2bd60248-36f9-4c6f-81a2-6bdca6d93518" />
 With this structure we can access all the information we need from the Clients, as well as from the Channels.
 
