@@ -204,7 +204,7 @@ This command kills the program, just make sure to close all fds and if you alloc
 > [!IMPORTANT]
 > In hexchat if you use /help it returns its own help response, it doesn't reach the server. That's why we made our own /help command. In netcat you can still use HELP.
 
-## How to run the program
+## Running the program
 
 ```bash
   make
