@@ -82,15 +82,23 @@ It's only intended to be used when logging into the server, since hexchat does i
 | `/join <#chann> [<key>]` | Joins a channel that requires a key to join |
 | `/join 0` | Leaves all the joined channels |
 
-This command is kind of the base of the project, you need this command to test almost every other command. It's tricky because you need to have a lot into account.
-Questions that you need to make every time you join a channel:
+This command is kind of the base of the project, you need this command to test almost every other command. It's tricky because you need to take a lot into account.
+Questions that you need to ask yourself every time you join a channel:
 - Did the client reach the _[CHANNEL LIMIT](https://modern.ircdocs.horse/#chanlimit-parameter)_?
-- Did the channel reach the _[CLIENT LIMIT](https://modern.ircdocs.horse/#client-limit-channel-mode)_?
-- Does the channel have an _[INVITE ONLY MODE](https://modern.ircdocs.horse/#invite-only-channel-mode)_?
-- Does the channel need a _[KEY](https://modern.ircdocs.horse/#key-channel-mode)_ to enter?
-There are many replies and errors that this command has, but you will have to look for them.
+- Does the channel exist?
 
-This is a complex line with the /join command that should not give seg fault or equivalent, just send the client some errors.
+  If it does:
+     - Did the channel reach the _[CLIENT LIMIT](https://modern.ircdocs.horse/#client-limit-channel-mode)_?
+     - Does the channel have an _[INVITE ONLY MODE](https://modern.ircdocs.horse/#invite-only-channel-mode)_?
+     - Does the channel need a _[KEY](https://modern.ircdocs.horse/#key-channel-mode)_ to enter?
+   
+   If it doesn't:
+     - Create it (handle the name if it is > [CHANNELLENNBR](https://modern.ircdocs.horse/#channellen-parameter))
+     - Add the client as member & operator
+
+There are many replies and errors to send for this command, but they are very well documented in the [Modern IRC Protocol](https://modern.ircdocs.horse/).
+
+This is an example of a complex line with the /join command that should not give seg fault or equivalent, just send the client the corresponding replies:
 ```
 /join #a,b,#c ,,key
 ```
@@ -118,7 +126,7 @@ This is a complex line with the /mode command:
 | Command | Description     |
 | :-------- | :------- |
 | `/topic <#chann>` | Returns the topic that the channel has. |
-| `/topic <#chann> <topic>` | Set a topic to the channel. |
+| `/topic <#chann> <topic>` | Sets a topic to the channel.  | 
 
 The topic command seems simple, but it can be difficult to do. There is one of the answers that is weird where you have to save the time the topic was posted. There are three things you have to do, save all the data of who posted the topic, protect when that person leaves the channel and check if the channel has the `+t` mode.
 
